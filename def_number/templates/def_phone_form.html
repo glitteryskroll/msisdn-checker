@@ -1,0 +1,79 @@
+{%load static%}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider</title>
+</head>
+    <style>
+        input {
+            padding: 15px;
+        }
+        button{
+            padding: 15px;
+        }
+    </style>
+<body>
+    <input type="text" id="number" name="number" placeholder="Введите номер телефона">
+    <button id="submitBtn">Отправить</button>
+
+    <div id="result"></div>
+
+    <script>
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                document.getElementById('submitBtn').click();
+            }
+        });
+
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            var number = document.getElementById("number").value;
+            var formData = new FormData();
+            formData.append('number', number);
+            fetch("/def_number/get_provider", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken")
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var result = data
+                if (result.error){
+                    document.getElementById("result").innerText = 'Ошибка: ' + result.error
+                }
+                else if(result.provider == null){
+                    document.getElementById("result").innerText = 'Провайдер не найден'
+                }
+                else{
+                    document.getElementById("result").innerHTML = `<div>Провайдер: ${result.provider.provider}</div>
+                                                                   <div>Регион: ${result.provider.region}</div>
+                                                                   <div>Территория ГАР: ${result.provider.territory_gar}</div>
+                                                                   <div>ИНН: ${result.provider.inn}</div>
+                                                                    `
+                }
+            })
+            .catch(error => console.error("Ошибка:", error));
+        });
+
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                var cookies = document.cookie.split(";");
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
