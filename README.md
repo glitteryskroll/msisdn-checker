@@ -22,7 +22,7 @@
 ## API:
 
 - **GET '/def_number'**: веб-страница с формой.
-- **POST '/def_number/get_provider', body: formData{number: int} **: запрос для получения данных об провайдере.
+- **POST '/def_number/get_provider'**, body: formData{number: int}: запрос для получения данных об провайдере.
 ## Результат:
 ![image](https://github.com/glitteryskroll/phone_service/assets/55313356/9f6ae204-2a2b-49aa-8e38-1f183967cec5)
 <br/>
