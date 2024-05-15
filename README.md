@@ -1,16 +1,16 @@
 # Запуск:
 
-Установка зависимостей pip install -r requirements.txt
-Инициализация БД phone_service из файла db.sql
-Готово
+- Установка зависимостей pip install -r requirements.txt
+- Инициализация БД phone_service из файла db.sql
+- Готово
 
 # Технологии:
 
-СУБД - PostgreSQL
-ЯП - Python
-Фреймворк - Django
-Тесты - PyTest
-Планировщик задач - schedule
+- СУБД - PostgreSQL
+- ЯП - Python
+- Фреймворк - Django
+- Тесты - PyTest
+- Планировщик задач - schedule
 
 # Сервис погоды
 
