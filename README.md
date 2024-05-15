@@ -16,7 +16,8 @@
 # Сервис погоды
 
 Главная страница доступна по маршруту `/def_number/`:
-![image](https://github.com/glitteryskroll/phone_service/assets/55313356/6b139b85-bcbd-40f2-84e4-9d0f69f0d3f8)
+
+![image](https://github.com/glitteryskroll/phone_service/assets/55313356/4a4d2cbc-d9cb-484e-9ed9-671b93d38395)
 <br/>На главной странице представлен поиск по номеру провайдера.
 ## API:
 
@@ -24,5 +25,8 @@
 - **POST '/def_number/get_provider', body: formData{number: int} **: запрос для получения данных об провайдере.
 ## Результат:
 ![image](https://github.com/glitteryskroll/phone_service/assets/55313356/9f6ae204-2a2b-49aa-8e38-1f183967cec5)
-![image](https://github.com/glitteryskroll/phone_service/assets/55313356/e133f1f4-0f8f-4763-a171-4782a30da3bf)
-![image](https://github.com/glitteryskroll/phone_service/assets/55313356/2b3f16f4-23df-4064-aec8-b5a1c56af167)
+![image](https://github.com/glitteryskroll/phone_service/assets/55313356/d9411149-f134-46cf-b9df-e23a917639c4)
+![image](https://github.com/glitteryskroll/phone_service/assets/55313356/8a72e869-aacb-4fff-9664-bbd5576f3d44)
+![image](https://github.com/glitteryskroll/phone_service/assets/55313356/9828b596-1f4f-456c-838d-e676ba916089)
+
+
