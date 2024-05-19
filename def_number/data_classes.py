@@ -1,5 +1,6 @@
 from dataclasses import dataclass, asdict
 
+
 @dataclass
 class PhoneProvider:
     ndc: int
@@ -13,6 +14,7 @@ class PhoneProvider:
 
     def to_dict(self):
         return asdict(self)
+
 
 @dataclass
 class PhoneNumber:
