@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16rc1-alpine
+    container_name: number_service_db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_NAME}"
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+      
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: number_service
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    command:
+      sh -c "python manage.py migrate && gunicorn phone_service.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  test:
+    build:
+      context: .
+    env_file:
+      - .env
+    command: pytest
+    container_name: number_service_test
+    volumes:
+      - .:/code
+    depends_on:
+      - web
+    networks:
+      - backend
+
+  scheduler:
+    build:
+      context: .
+    container_name: number_service_parser
+    command: python scheduler.py
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    networks:
+      - backend
+
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:

@@ -1,32 +1,27 @@
-from data_classes import PhoneProvider
-from .settings import connect_to_db
+from ..models import PhoneProvider
+from ..data_classes import PhoneProvider as PhoneProviderData
+import logging
 
+logger = logging.getLogger("number_service")
 
-def add_providers(providers: list[PhoneProvider]):
-    conn = connect_to_db()
-    with conn.cursor() as cursor:
-        for provider in providers:
-            try:
-                query = (
-                    """INSERT INTO phone_providers(ndc, "snA", "snB", capacity, provider, region, territory_gar, inn) VALUES (%s, %s, %s, %s, '%s', '%s', '%s', %s) ON CONFLICT (ndc, "snA", "snB") DO NOTHING;"""
-                    % (
-                        provider.ndc,
-                        provider.snA,
-                        provider.snB,
-                        provider.capacity,
-                        provider.provider,
-                        provider.region,
-                        provider.territory_gar,
-                        provider.inn,
-                    )
-                )
-                cursor.execute(str(query))
-            except Exception as e:
-                conn.rollback()
-                print("DEBUG ERROR: add_providers:", e)
-                conn.close()
-                return False
+def add_providers(providers: list[PhoneProviderData]):
+    try:
+        providers_to_create = [
+            PhoneProvider(
+                ndc=provider.ndc,
+                snA=provider.snA,
+                snB=provider.snB,
+                capacity=provider.capacity,
+                provider=provider.provider,
+                region=provider.region,
+                territory_gar=provider.territory_gar,
+                inn=provider.inn
+            )
+            for provider in providers
+        ]
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+        PhoneProvider.objects.bulk_create(providers_to_create, ignore_conflicts=True)
+    except Exception as e:
+        logger.error(f"add_providers {e}")
+        return False
+    return True

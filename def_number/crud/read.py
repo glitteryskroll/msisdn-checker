@@ -1,62 +1,36 @@
-import psycopg2
-from .settings import connect_to_db
-from ..data_classes import PhoneNumber, PhoneProvider
-from psycopg2.extras import DictCursor
+from ..models import PhoneProvider
+from ..data_classes import PhoneNumber
+import logging
+
+logger = logging.getLogger("number_service")
 
 
 def get_provider_by_number(number: PhoneNumber) -> PhoneProvider:
     try:
-        conn = connect_to_db()
-        with conn.cursor(cursor_factory=DictCursor) as cursor:
-            cursor.execute(
-                f""" 
-                SELECT *
-                FROM phone_providers
-                WHERE ndc = {number.ndc}
-                AND {number.sn} BETWEEN "snA" AND "snB";
-            """
-            )
-            data = cursor.fetchone()
-            if data:
-                phone_provider = PhoneProvider(
-                    ndc=data["ndc"],
-                    snA=data["snA"],
-                    snB=data["snB"],
-                    capacity=data["capacity"],
-                    provider=data["provider"],
-                    region=data["region"],
-                    territory_gar=data["territory_gar"],
-                    inn=data["inn"],
-                )
-                return phone_provider
-            else:
-                return None
+        phone_provider = PhoneProvider.objects.filter(
+            ndc=number.ndc,
+            snA__lte=number.sn,
+            snB__gte=number.sn
+        ).first()
 
-    except psycopg2.Error as e:
-        print("DEBUG ERROR: get_provider_by_number:", e)
+        if phone_provider:
+            return phone_provider
+        else:
+            return None
+
+    except Exception as e:
+        logger.error(f"get_provider_by_number {e}")
         return None
 
 
 def get_random_provider() -> PhoneProvider:
     try:
-        conn = connect_to_db()
-        with conn.cursor(cursor_factory=DictCursor) as cursor:
-            cursor.execute("SELECT * FROM phone_providers ORDER BY RANDOM() LIMIT 1")
-            data = cursor.fetchone()
-            if data:
-                phone_provider = PhoneProvider(
-                    ndc=data["ndc"],
-                    snA=data["snA"],
-                    snB=data["snB"],
-                    capacity=data["capacity"],
-                    provider=data["provider"],
-                    region=data["region"],
-                    territory_gar=data["territory_gar"],
-                    inn=data["inn"],
-                )
-                return phone_provider
-            else:
-                return None
-    except psycopg2.Error as e:
-        print("DEBUG ERROR: get_random_provider:", e)
+        phone_provider = PhoneProvider.objects.order_by('?').first()
+
+        if phone_provider:
+            return phone_provider
+        else:
+            return None
+    except Exception as e:
+        logger.error(f"get_random_provider {e}")
         return None

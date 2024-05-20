@@ -1,0 +1,80 @@
+INFO 2024-05-20 00:42:15,202 scheduler parse_data start parsing number codes
+ERROR 2024-05-20 00:42:18,312 scheduler parse_data: error with parsing data - [Errno 2] No such file or directory: 'src/number_codes/DEF-9.csv'
+INFO 2024-05-20 00:43:18,347 scheduler parse_data start parsing number codes
+ERROR 2024-05-20 00:43:20,827 scheduler parse_data: error with parsing data - [Errno 2] No such file or directory: 'src/number_codes/DEF-9.csv'
+INFO 2024-05-20 00:44:20,858 scheduler parse_data start parsing number codes
+ERROR 2024-05-20 00:44:24,031 scheduler parse_data: error with parsing data - [Errno 2] No such file or directory: 'src/number_codes/DEF-9.csv'
+INFO 2024-05-20 00:49:16,734 scheduler parse_data start parsing number codes
+ERROR 2024-05-20 00:49:19,912 scheduler parse_data: error with parsing data - [Errno 2] No such file or directory: 'src/number_codes/DEF-9.csv'
+INFO 2024-05-20 00:51:01,029 scheduler parse_data start parsing number codes
+INFO 2024-05-20 00:51:04,743 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 00:51:21,684 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 00:51:49,754 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 00:51:58,026 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 00:51:58,028 scheduler init_file init_type DEF-9
+INFO 2024-05-20 00:52:14,321 scheduler init_file init_type ABC-8
+INFO 2024-05-20 00:54:50,452 scheduler parse_data start parsing number codes
+INFO 2024-05-20 00:54:53,450 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 00:55:04,619 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 00:55:24,819 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 00:55:37,070 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 00:55:37,072 scheduler init_file init_type DEF-9
+INFO 2024-05-20 00:55:53,736 scheduler init_file init_type ABC-8
+INFO 2024-05-20 00:57:20,312 scheduler init_file init_type ABC-4
+INFO 2024-05-20 01:44:47,914 scheduler parse_data start parsing number codes
+INFO 2024-05-20 01:44:50,438 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 01:45:03,038 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 01:45:35,256 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 01:45:45,259 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 01:45:45,261 scheduler init_file init_type DEF-9
+INFO 2024-05-20 01:46:01,828 scheduler init_file init_type ABC-8
+INFO 2024-05-20 01:47:26,745 scheduler init_file init_type ABC-4
+INFO 2024-05-20 01:52:51,470 scheduler init_file init_type ABC-3
+INFO 2024-05-20 01:54:10,409 scheduler parse_data parsing and inserting ended successfully
+INFO 2024-05-20 01:55:10,439 scheduler parse_data start parsing number codes
+INFO 2024-05-20 01:55:16,149 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 01:55:26,627 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 01:55:57,043 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 01:56:07,958 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 01:56:07,960 scheduler init_file init_type DEF-9
+INFO 2024-05-20 01:56:24,317 scheduler init_file init_type ABC-8
+INFO 2024-05-20 01:57:51,957 scheduler init_file init_type ABC-4
+INFO 2024-05-20 02:03:18,857 scheduler init_file init_type ABC-3
+INFO 2024-05-20 02:04:32,390 scheduler parse_data parsing and inserting ended successfully
+INFO 2024-05-20 02:05:32,427 scheduler parse_data start parsing number codes
+INFO 2024-05-20 02:05:34,469 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 02:05:51,579 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 02:06:15,426 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 02:06:27,825 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 02:06:27,827 scheduler init_file init_type DEF-9
+INFO 2024-05-20 02:06:43,688 scheduler init_file init_type ABC-8
+INFO 2024-05-20 02:08:05,252 scheduler init_file init_type ABC-4
+INFO 2024-05-20 02:13:24,170 scheduler init_file init_type ABC-3
+INFO 2024-05-20 02:14:40,017 scheduler parse_data parsing and inserting ended successfully
+INFO 2024-05-20 02:15:40,050 scheduler parse_data start parsing number codes
+INFO 2024-05-20 02:15:43,024 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 02:15:52,277 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 02:16:20,540 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 02:16:30,339 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 02:16:30,341 scheduler init_file init_type DEF-9
+INFO 2024-05-20 02:16:48,278 scheduler init_file init_type ABC-8
+INFO 2024-05-20 02:18:16,288 scheduler init_file init_type ABC-4
+INFO 2024-05-20 02:23:48,558 scheduler init_file init_type ABC-3
+INFO 2024-05-20 02:25:02,888 scheduler parse_data parsing and inserting ended successfully
+INFO 2024-05-20 02:26:02,918 scheduler parse_data start parsing number codes
+INFO 2024-05-20 02:26:05,278 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 02:26:18,191 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 02:26:38,724 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 02:26:51,980 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 02:26:51,982 scheduler init_file init_type DEF-9
+INFO 2024-05-20 02:27:07,971 scheduler init_file init_type ABC-8
+INFO 2024-05-20 02:28:29,318 scheduler init_file init_type ABC-4
+INFO 2024-05-20 02:33:41,822 scheduler init_file init_type ABC-3
+INFO 2024-05-20 02:35:01,776 scheduler parse_data parsing and inserting ended successfully
+INFO 2024-05-20 02:36:01,806 scheduler parse_data start parsing number codes
+INFO 2024-05-20 02:36:05,322 scheduler load_file loaded file DEF-9
+INFO 2024-05-20 02:36:16,972 scheduler load_file loaded file ABC-8
+INFO 2024-05-20 02:36:39,986 scheduler load_file loaded file ABC-4
+INFO 2024-05-20 02:36:52,322 scheduler load_file loaded file ABC-3
+INFO 2024-05-20 02:36:52,323 scheduler init_file init_type DEF-9
+INFO 2024-05-20 02:37:07,998 scheduler init_file init_type ABC-8

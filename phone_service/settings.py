@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,14 +31,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
     "django.contrib.staticfiles",
     "def_number",
 ]
@@ -45,7 +45,6 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -74,9 +73,18 @@ WSGI_APPLICATION = "phone_service.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {}
-
-
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+APP_HOST = os.getenv('APP_HOST')
+APP_PORT = os.getenv('APP_PORT')
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -117,8 +125,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -131,20 +137,44 @@ LOGGING = {
             "format": "{levelname} {message}",
             "style": "{",
         },
+
     },
     "handlers": {
         "file": {
             "level": "DEBUG",
             "class": "logging.FileHandler",
-            "filename": os.path.join(BASE_DIR, "django.log"),
+            "filename": os.path.join(BASE_DIR, "log.log"),
+            "formatter": "verbose",
+        },
+        "parser_file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "parser.log"),
+            "formatter": "verbose",
+        },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
     },
     "loggers": {
-        "django": {
+        "number_service": {
             "handlers": ["file"],
-            "level": "DEBUG",
+            "level": "INFO",
             "propagate": True,
         },
+        "parser":{
+            "handlers": ["parser_file", "console"],
+            "level": "INFO",
+            "propagate": True,
+        }
     },
+}
+
+NUMBER_DATA_URLS = {
+    'DEF-9': 'https://opendata.digital.gov.ru/downloads/DEF-9xx.csv',
+    'ABC-8': 'https://opendata.digital.gov.ru/downloads/ABC-8xx.csv',
+    'ABC-4': 'https://opendata.digital.gov.ru/downloads/ABC-4xx.csv',
+    'ABC-3': 'https://opendata.digital.gov.ru/downloads/ABC-3xx.csv',
 }

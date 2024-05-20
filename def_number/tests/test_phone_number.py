@@ -1,10 +1,19 @@
 import requests
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'phone_service.settings')
+import django
+django.setup()
 from ..crud.read import get_random_provider
+from django.conf import settings
+
+APP_HOST = settings.APP_HOST
+APP_PORT = settings.APP_PORT
 
 urls = {
-    "get_provider": "http://localhost:8000/def_number/get_provider",
-    "def_phone_provider_form": "http://localhost:8000/def_number",
+    "get_provider": f"http://{APP_HOST}:{APP_PORT}/def_number/get_provider",
+    "def_phone_provider_form": f"http://{APP_HOST}:{APP_PORT}/def_number",
 }
+print(urls)
 response = requests.get(urls["def_phone_provider_form"])
 csrftoken = response.cookies.get("csrftoken")
 headers = {"X-CSRFToken": csrftoken}
